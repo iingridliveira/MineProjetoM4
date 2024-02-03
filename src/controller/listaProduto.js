@@ -26,7 +26,7 @@ function apagaProdutos(nome) {
      produtos[ProdutoIndex].consumo > 300
      return produtos.splice[ProdutoIndex];
   }else{
-     return "olha Produto nao encontrado"
+     return "Produto não passou de 300kw/h "
   }
 }
 export {listaProdutos, getProduto,atualizarProdutos,apagaProdutos}
