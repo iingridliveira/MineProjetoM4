@@ -17,7 +17,7 @@ produtosRoute.patch("/produtoatualizar", (req, res) => {
     const listaProduto = atualizarProdutos(nome);
     res.json({listaProduto});
 });
-produtosRoute.put("/produtoapagar", (req, res) => {
+produtosRoute.delete("/produtoapagar", (req, res) => {
     const {nome} = req.body;
     const listaProduto = apagaProdutos(nome);
     res.json({listaProduto});
