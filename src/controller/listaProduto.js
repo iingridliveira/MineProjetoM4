@@ -13,20 +13,29 @@ function atualizarProdutos(nome) {
   let produto = produtos.find(produto => produto.nome ===  nome)
   if(produto){
      let ProdutoIndex = produtos.findIndex(produto => produto.nome == nome);
-     produtos[ProdutoIndex].consumo = produtos[ProdutoIndex].consumo = (produtos[ProdutoIndex].potencia * (produtos[ProdutoIndex].tempo*produtos[ProdutoIndex].dias))/1000
+     produtos[ProdutoIndex].consumo = produtos[ProdutoIndex].consumo =
+    (produtos[ProdutoIndex].potencia * (produtos[ProdutoIndex].tempo*produtos[ProdutoIndex].dias))/1000
      return produtos[ProdutoIndex];
   }else{
      return "olha Produto nao encontrado"
   }
 }
 function apagaProdutos(nome) {
-  let produto = produtos.find(produto => produto.nome ===  nome)
-  if(produto){
-     let ProdutoIndex = produtos.findIndex(produto => produto.nome == nome);
-     produtos[ProdutoIndex].consumo > 300
-     return produtos.splice[ProdutoIndex];
-  }else{
-     return "Produto não passou de 300kw/h "
-  }
+   let produtoApagarIndex = produtos.findIndex(produto => produto.nome === nome);
+
+   if (produtoApagarIndex !== -1) { 
+       if (produtos[produtoApagarIndex].consumo >= 300) {
+           console.log("Produto atingiu consumo >= 300 kWh");
+           const produtoRemovido = produtos.splice(produtoApagarIndex, 1)[0];
+           return produtoRemovido;
+       } else {
+           console.log("Produto não atingiu consumo >= 300 kWh");
+           return "Produto não atingiu 300kw/h.";
+       }
+   } else {
+       console.log("Produto não encontrado");
+       return "Produto não encontrado.";
+   }
 }
+
 export {listaProdutos, getProduto,atualizarProdutos,apagaProdutos}

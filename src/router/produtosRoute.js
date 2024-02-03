@@ -1,6 +1,6 @@
 
 import { Router } from "express";
-import { listaProdutos,getProduto, atualizarProdutos,apagaProdutos } from "../controller/listaProduto.js";
+import { listaProdutos,getProduto, atualizarProdutos,apagaProdutos} from "../controller/listaProduto.js";
 const produtosRoute = Router();
 produtosRoute.post("/produtopostar", (req, res) => {
     const {nome, tipo, potencia, tempo,dias} = req.body;
@@ -22,4 +22,5 @@ produtosRoute.delete("/produtoapagar", (req, res) => {
     const listaProduto = apagaProdutos(nome);
     res.json({listaProduto});
 });
+
 export{produtosRoute}
