@@ -1,10 +1,11 @@
 
 import { Router } from "express";
-import { listaProdutos,getProduto, atualizarProdutos,apagaProdutos} from "../controller/listaProduto.js";
+import { listaProdutos,getProduto, atualizarProdutosconsumo,
+atualizarProdutostaxa,apagaProdutos} from "../controller/listaProduto.js";
 const produtosRoute = Router();
 produtosRoute.post("/produtopostar", (req, res) => {
-    const {nome, tipo, potencia, tempo,dias} = req.body;
-    const novoProduto = listaProdutos(nome, tipo, potencia, tempo, dias);
+    const {nome, tipo, potencia, tempo,dias,taxa} = req.body;
+    const novoProduto = listaProdutos(nome, tipo, potencia, tempo, dias,taxa);
     res.json({novoProduto});
 });
 produtosRoute.get("/produtopegar", (req, res) => {
@@ -12,9 +13,14 @@ produtosRoute.get("/produtopegar", (req, res) => {
     res.json({ listaProduto });
 });
 
-produtosRoute.patch("/produtoatualizar", (req, res) => {
+produtosRoute.patch("/produtoatualizarconsumo", (req, res) => {
     const {nome} = req.body;
-    const listaProduto = atualizarProdutos(nome);
+    const listaProduto = atualizarProdutosconsumo(nome);
+    res.json({listaProduto});
+});
+produtosRoute.patch("/produtoatualizargasto", (req, res) => {
+    const {nome} = req.body;
+    const listaProduto = atualizarProdutostaxa(nome);
     res.json({listaProduto});
 });
 produtosRoute.delete("/produtoapagar", (req, res) => {

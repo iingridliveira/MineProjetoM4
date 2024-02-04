@@ -1,7 +1,7 @@
 import { produto } from "../model/produto.js";
 var produtos = []
-function listaProdutos(nome, tipo, potencia, tempo, dias){
- var novoProduto = new produto(nome, tipo, potencia, tempo, dias)
+function listaProdutos(nome, tipo, potencia, tempo, dias,taxa){
+ var novoProduto = new produto(nome, tipo, potencia, tempo, dias,taxa)
  produtos.push(novoProduto)
  return novoProduto;
 }
@@ -9,7 +9,7 @@ function getProduto() {
     return produtos;
 }
 
-function atualizarProdutos(nome) {
+function atualizarProdutosconsumo(nome) {
   let produto = produtos.find(produto => produto.nome ===  nome)
   if(produto){
      let ProdutoIndex = produtos.findIndex(produto => produto.nome == nome);
@@ -20,6 +20,18 @@ function atualizarProdutos(nome) {
      return "olha Produto nao encontrado"
   }
 }
+function atualizarProdutostaxa(nome) {
+    let produto = produtos.find(produto => produto.nome ===  nome)
+    if(produto){
+       let ProdutoIndex = produtos.findIndex(produto => produto.nome == nome);
+       produtos[ProdutoIndex].gasto = produtos[ProdutoIndex].gasto =
+      (produtos[ProdutoIndex].potencia * (produtos[ProdutoIndex].tempo*produtos[ProdutoIndex].dias))/1000 * produtos[ProdutoIndex].taxa
+      console.log(`Produto gastou R$ ${produtos[ProdutoIndex].gasto},00`);
+      return produtos[ProdutoIndex];
+    }else{
+       return "olha Produto nao encontrado"
+    }
+  }
 function apagaProdutos(nome) {
    let produtoApagarIndex = produtos.findIndex(produto => produto.nome === nome);
 
@@ -38,4 +50,4 @@ function apagaProdutos(nome) {
    }
 }
 
-export {listaProdutos, getProduto,atualizarProdutos,apagaProdutos}
+export {listaProdutos, getProduto,atualizarProdutosconsumo,atualizarProdutostaxa,apagaProdutos}
