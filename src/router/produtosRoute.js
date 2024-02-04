@@ -1,6 +1,6 @@
 
 import { Router } from "express";
-import { listaProdutos,getProduto, atualizarProdutosconsumo,
+import { listaProdutos,getProduto,getProdutoconsumo,getProdutogasto,atualizarProdutosconsumo,
 atualizarProdutostaxa,apagaProdutos} from "../controller/listaProduto.js";
 const produtosRoute = Router();
 produtosRoute.post("/produtopostar", (req, res) => {
@@ -10,6 +10,14 @@ produtosRoute.post("/produtopostar", (req, res) => {
 });
 produtosRoute.get("/produtopegar", (req, res) => {
     const listaProduto = getProduto();
+    res.json({ listaProduto });
+});
+produtosRoute.get("/produtopegaratualizadoconsumo", (req, res) => {
+    const listaProduto = getProdutoconsumo();
+    res.json({ listaProduto });
+});
+produtosRoute.get("/produtopegaratualizadogasto", (req, res) => {
+    const listaProduto = getProdutogasto();
     res.json({ listaProduto });
 });
 

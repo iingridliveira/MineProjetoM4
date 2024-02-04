@@ -1,7 +1,7 @@
 import express from "express";
 import { produtosRoute } from "./src/router/produtosRoute.js";
 const app = express();
-const port = 2010;
+const port = 2024;
 app.use(express.json());
 app.use(produtosRoute );
 

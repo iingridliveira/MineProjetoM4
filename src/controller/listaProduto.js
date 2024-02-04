@@ -24,6 +24,20 @@ function atualizarProdutosconsumo(nome) {
      return "olha Produto nao encontrado"
   }
 }
+function getProdutoconsumo() {
+    let produtosAtualizadosconsumo = [];
+
+    for (let i = 0; i < produtos.length; i++) {
+        if (produtos[i].consumo === 0) {
+            return "Olha, o consumo do produto não foi atualizado";
+        } else {
+            produtosAtualizadosconsumo.push(produtos[i]);
+        }
+    }
+
+    return produtosAtualizadosconsumo;
+}
+
 function atualizarProdutostaxa(nome) {
     let produto = produtos.find(produto => produto.nome ===  nome)
     if(produto){
@@ -34,7 +48,7 @@ function atualizarProdutostaxa(nome) {
      R$${produtos[ProdutoIndex].taxa}`);
       return produtos[ProdutoIndex];
     }else{
-       return "olha Produto nao encontrado"
+       return "olha Produto não encontrado"
     }
   }
 function apagaProdutos(nome) {
@@ -53,5 +67,23 @@ function apagaProdutos(nome) {
        return "Produto não encontrado.";
    }
 }
+function getProdutogasto() {
+    let produtosAtualizadosgasto = [];
 
-export {listaProdutos, getProduto,atualizarProdutosconsumo,atualizarProdutostaxa,apagaProdutos}
+    for (let i = 0; i < produtos.length; i++) {
+        if (produtos[i].gasto === 0) {
+            return "Olha, o gasto do produto não foi atualizado";
+        } else {
+            produtosAtualizadosgasto.push(produtos[i]);
+        }
+    }
+
+    return produtosAtualizadosgasto;
+}
+export {listaProdutos,
+        getProduto,
+        getProdutoconsumo,
+        getProdutogasto,
+        atualizarProdutosconsumo,
+        atualizarProdutostaxa,
+        apagaProdutos}
