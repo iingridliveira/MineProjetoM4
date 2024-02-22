@@ -8,9 +8,10 @@
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - Node.js
-- express
-- Git e Github
+- express.
+- Git e Github,
 - insomnia
+- testecommit
 
 
 
